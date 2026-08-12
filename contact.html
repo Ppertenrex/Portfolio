@@ -58,5 +58,34 @@
 <footer>
   <p>© 2026 Ppertenrex</p>
 </footer>
+
+<script>
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const message = e.target.message.value;
+
+  await fetch("https://discord.com/api/webhooks/1536910850227441749/YMaQ7CNSyqnJl-Xgi9nh7TlM9AcCps8tXpbtP02korpfXPFQg4KmXZ0fqH4WkisiNOKf", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      embeds: [{
+        title: "New Portfolio Contact",
+        color: 7506394,
+        fields: [
+          { name: "Name", value: name },
+          { name: "Email", value: email },
+          { name: "Message", value: message }
+        ]
+      }]
+    })
+  });
+
+  alert("Message sent!");
+});
+</script>
+
 </body>
 </html>
