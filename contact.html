@@ -58,7 +58,6 @@
 <footer>
   <p>© 2026 Ppertenrex</p>
 </footer>
-
 <script>
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -67,26 +66,36 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   const email = e.target.email.value;
   const message = e.target.message.value;
 
-  await fetch("Yhttps://discord.com/api/webhooks/1536910850227441749/YMaQ7CNSyqnJl-Xgi9nh7TlM9AcCps8tXpbtP02korpfXPFQg4KmXZ0fqH4WkisiNOKf", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      content: "<@1159699378571857951>", 
-      embeds: [{
-        title: "New Portfolio Contact",
-        color: 7506394,
-        fields: [
-          { name: "Name", value: name },
-          { name: "Email", value: email },
-          { name: "Message", value: message }
-        ]
-      }]
-    })
-  });
+  try {
+    const res = await fetch("https://discord.com/api/webhooks/1536910850227441749/YMaQ7CNSyqnJl-Xgi9nh7TlM9AcCps8tXpbtP02korpfXPFQg4KmXZ0fqH4WkisiNOKf", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        content: "<@1159699378571857951>", 
+        embeds: [{
+          title: "New Portfolio Contact",
+          color: 7506394,
+          fields: [
+            { name: "Name", value: name || "None" },
+            { name: "Email", value: email || "None" },
+            { name: "Message", value: message || "None" }
+          ]
+        }]
+      })
+    });
 
-  alert("Message sent!");
+    if (res.ok) {
+      alert("Message sent!");
+    } else {
+      alert("Failed to send. Check webhook URL.");
+    }
+  } catch (err) {
+    alert("Error sending message.");
+    console.error(err);
+  }
 });
 </script>
+
 
 </body>
 </html>
