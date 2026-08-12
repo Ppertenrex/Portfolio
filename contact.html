@@ -67,13 +67,13 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   const email = e.target.email.value;
   const message = e.target.message.value;
 
-  await fetch("https://discord.com/api/webhooks/1536910850227441749/YMaQ7CNSyqnJl-Xgi9nh7TlM9AcCps8tXpbtP02korpfXPFQg4KmXZ0fqH4WkisiNOKf", {
+  await fetch("Yhttps://discord.com/api/webhooks/1536910850227441749/YMaQ7CNSyqnJl-Xgi9nh7TlM9AcCps8tXpbtP02korpfXPFQg4KmXZ0fqH4WkisiNOKf", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      content: "<@1159699378571857951>", 
       embeds: [{
         title: "New Portfolio Contact",
-        content: "<@1159699378571857951>",
         color: 7506394,
         fields: [
           { name: "Name", value: name },
